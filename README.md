@@ -2,20 +2,41 @@
 # HOOD: Hierarchical Graphs for Generalized Modelling of Clothing Dynamics
 
 
-$HOOD_DATA
-    |-- aux_data
-        |-- datasplits // directory with csv data splits used for training the model
-        |-- smpl // directory with smpl models
-            |-- SMPL_NEUTRAL.pkl
-            |-- SMPL_FEMALE.pkl
-            |-- SMPL_MALE.pkl
-        |-- garment_meshes // folder with .obj meshes for garments used in HOOD
-        |-- garments_dict.pkl // dictionary with garmentmeshes and their auxilliary data used for training and inference
-        |-- smpl_aux.pkl // dictionary with indices of SMPL vertices that correspond to hands, used to disable hands during inference to avoid body self-intersections
-    |-- trained_models // directory with trained HOOD models
-        |-- cvpr_submission.pth // model used in the CVPR paper
-        |-- postcvpr.pth // model trained with refactored code with several bug fixes after the CVPR submission
-        |-- fine15.pth // baseline model without denoted as "Fine15" in the paper (15 message-passing steps, no long-range edges)
-        |-- fine48.pth // baseline model without denoted as "Fine48" in the paper (48 message-passing steps, no long-range edges)
+$Root
+    |-- Dataset
+        |-- Human
+            |-- obj格式
+                |-- 0_0 //人体体型
+                    |-- pose //人体姿态
+                |-- 0_1
+                |-- 0_-1
+                |-- 0_2
+            |-- txt //文本语义
+                |-- 0_0 
+                |-- 0_1
+                |-- 0_-1
+                |-- 0_2
+        |-- Garment
+            |-- style //款式类型
+                |-- dress
+                    |-- 0_0 //体型
+                ```
+                |-- tshirt
+    |-- Code
+        |-- wjz
+            |-- 面向不同体型特征的服装款式迁移方法 // 物理法
+        |-- wyk
+            |-- 三维服装款式风格迁移方法 // 基于学习的方法、面向不同体型特征
+            |-- 三维服装快速试穿建模方法 // 基于学习的方法、Transformer
+        |-- fwk
+            |-- 多模态三维服装变形预测方法 //变分自编码器、文本语义动作驱动
+        |-- zxr
+            |-- 无监督三维服装变形 //无需数据依赖
+            |-- 无监督体态因素影响下的三维服装变形 //数据集依赖减少，结合影响服装变形的体型、姿态因素
+            |-- 无监督款式因素影响下的三维服装变形 //数据集依赖减少，服装款式参数化驱动服装变形
+            |-- 无监督多因素融合下的三维服装变形 //数据集依赖减少，结合体型、姿态、款式共同驱动服装变形
+        |-- hgq
+            |-- 结合无监督的多层服装变形 //数据集依赖减少，处理层间服装交互
+            
 ```
 
